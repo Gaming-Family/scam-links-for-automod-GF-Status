@@ -1,15 +1,22 @@
-const { Client } = require("discord.js")
-const client = new Client()
+const { Client, Intents } = require("discord.js")
+const client = new Client({
+ intent: Intents.FLAGS.GUILDS,
+         Intents.FLAGS.GUILD_MESSAGES
+         allowedMentions: { 
+        parse: ['users', 'roles'], 
+        repliedUser: true
+       }
+})
 
 const scams = require("./scams.json")
 
-client.on("message", async message => {
+client.on("messageCreate", async message => {
 if(scams.includes(message.content.toLowerCase())) {
   message.delete()
-  message.channel.send("No scam links aloowd").then((x) => {
+  message.channel.send({ content: "No scam links aloowd" }).then((x) => {
     setTimeout(() => {
       x.delete()
-    }, 5000)
+    }, 10000)
   })
 }
 })
