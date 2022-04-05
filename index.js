@@ -1,6 +1,6 @@
 const { Client, Intents } = require("discord.js")
 const client = new Client({
- intent: Intents.FLAGS.GUILDS,
+ intents: Intents.FLAGS.GUILDS,
          Intents.FLAGS.GUILD_MESSAGES
          allowedMentions: { 
         parse: ['users', 'roles'], 
