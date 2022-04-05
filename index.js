@@ -11,9 +11,9 @@ const client = new Client({
 const scams = require("./scams.json")
 
 client.on("messageCreate", async message => {
-if(scams.includes(message.content.toLowerCase())) {
+if(scams.includes(message.content)) {
   message.delete()
-  message.channel.send({ content: "No scam links aloowd" }).then((x) => {
+  message.channel.send({ content: "No scam links allowed" }).then((x) => {
     setTimeout(() => {
       x.delete()
     }, 10000)
